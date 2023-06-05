@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 
 function Login() {
@@ -12,6 +13,13 @@ function Login() {
     console.log("submit", data);
     // Submit data for login
   }
+
+  function socialAuthenticator(medium) {
+    if (medium === "google") {
+    } else if (medium === "github") {
+    }
+  }
+
   return (
     <>
       <form
@@ -80,6 +88,35 @@ function Login() {
           Submit
         </button>
       </form>
+      <div className="mt-2">or continue with</div>
+      <div className="social-login flex justify-center items-center gap-2">
+        <button
+          className="border-2 border-solid bg-white rounded-lg px-10 py-1"
+          onClick={() => {
+            socialAuthenticator("github");
+          }}
+        >
+          <Image
+            src="./images/github.svg"
+            alt="github"
+            width={20}
+            height={20}
+          />
+        </button>
+        <button
+          className="border-2 border-solid bg-white rounded-lg px-10 py-1"
+          onClick={() => {
+            socialAuthenticator("google");
+          }}
+        >
+          <Image
+            src="./images/google.svg"
+            alt="github"
+            width={20}
+            height={20}
+          />
+        </button>
+      </div>
     </>
   );
 }
